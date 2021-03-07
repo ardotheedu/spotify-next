@@ -1,6 +1,4 @@
-body{
-    background-color: var(--black-s);
-}
+
 /*Background*/
 
 .background-per {
@@ -139,17 +137,11 @@ img.artist-image {
 #loader {
     z-index: 1001; /* anything higher than z-index: 1000 of .loader-section */
 }
-h1 {
-    color: #EEEEEE;
-}
+
 
 /*Artists*/
 .personalization{
     align-items: center;
     display: flex;
     flex-direction: column;
-}
-img {
-    width: 640px;
-    height: 640px;
 }

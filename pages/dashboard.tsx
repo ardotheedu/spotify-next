@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import SpotifyWebApi from 'spotify-web-api-node';
 import { useRouter } from 'next/router'
-import '../styles/pages/dashboard.css'
+import '../styles/pages/dashboard.module.css'
 
 interface AuthState {
     token: string;
@@ -14,7 +14,6 @@ export default function Dashboard(props: SpotifyApi.ArtistObjectFull[]) {
 
 
     // eslint-disable-next-line no-restricted-globals
-    const url_atual = location.search
     
     setArtists(props)
 

@@ -1,8 +1,9 @@
 import querystring from 'querystring'
 
+import Cors from 'cors'
+
 var client_id = process.env.CLIENT_ID; // Your client id
-var client_secret = process.env.CLIENT_SECRET; // Your secret
-var redirect_uri = 'http://localhost:8080/personalization'; // Your redirect uri
+var redirect_uri = 'http://localhost:3000/dashboard'; // Your redirect uri
 
 var generateRandomString = function(length) {
   var text = '';
@@ -16,19 +17,25 @@ var generateRandomString = function(length) {
 
 var stateKey = 'spotify_auth_state';
 
-export default function login(req, res) {
+const cors = Cors({
+  methods: ['GET', 'HEAD'],
+})
 
+
+export default function login(req, res) {
+    const client_id = process.env.CLIENT_ID
     var state = generateRandomString(16);
-    res.cookie(stateKey, state);
   
     // your application requests authorization
-    var scope = 'user-read-private user-read-email';
-    res.redirect('https://accounts.spotify.com/authorize?' +
+    var scope = 'user-top-read';
+    const link = 'https://accounts.spotify.com/authorize?' +
       querystring.stringify({
         response_type: 'code',
         client_id: client_id,
         scope: scope,
         redirect_uri: redirect_uri,
         state: state
-      }));
+    });
+    console.log(client_id)
+    return res.json({link})
 };
