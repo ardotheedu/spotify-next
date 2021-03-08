@@ -1,4 +1,5 @@
 import querystring from 'querystring'
+import cookieParse from 'cookie-parser'
 
 import Cors from 'cors'
 
@@ -25,6 +26,8 @@ const cors = Cors({
 export default function login(req, res) {
     const client_id = process.env.CLIENT_ID
     var state = generateRandomString(16);
+
+    res.cookie(stateKey, state);
   
     // your application requests authorization
     var scope = 'user-top-read';
