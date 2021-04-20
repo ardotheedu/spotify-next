@@ -1,7 +1,7 @@
 
 /*Background*/
 
-.background-per {
+.backgroundper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,9 +9,9 @@
     overflow: auto;
     background-color: var(--black-s);
 }
-h1.title-per {
+h1.titleper {
     margin-top: 10px;
-    font-size: 80px;
+    font-size: 30px;
 }
 div#artist {
     margin-top: 15px;
@@ -23,7 +23,7 @@ div#artist {
     align-content: center;
 }
 
-p.artist-name {
+p.artistname {
     font-weight: bold;
     font-family: 'Helvetica Neue', sans-serif;
     text-align: center;
@@ -33,7 +33,7 @@ p.artist-name {
 }
 
 
-img.artist-image {
+img.artistimage {
 
     margin-left: 20px;
     margin-right: 20px;
@@ -41,7 +41,7 @@ img.artist-image {
 
 /*Loading*/
 
-#loader-wrapper {
+.loaderwrapper {
     position: fixed;
     top: 0;
     left: 0;
@@ -49,7 +49,7 @@ img.artist-image {
     height: 100%;
     z-index: 1000;
 }
-#loader {
+.loader {
     display: block;
     position: relative;
     left: 50%;
@@ -64,7 +64,7 @@ img.artist-image {
     animation: spin 2s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
 }
  
-#loader:before {
+.loader:before {
     content: "";
     position: absolute;
     top: 5px;
@@ -78,7 +78,7 @@ img.artist-image {
       animation: spin 3s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
 }
  
-#loader:after {
+.loader:after {
     content: "";
     position: absolute;
     top: 15px;
@@ -117,7 +117,7 @@ img.artist-image {
     }
 }
 
-#loader-wrapper .loader-section {
+.loaderwrapper .loadersection {
 	position: fixed;
 	top: 0;
 	width: 51%;
@@ -126,15 +126,15 @@ img.artist-image {
 	z-index: 1000;
 }
 
-#loader-wrapper .loader-section.section-left {
+.loaderwrapper .loadersection.sectionleft {
 	left: 0;
 }
 
-#loader-wrapper .loader-section.section-right {
+.loaderwrapper .loadersection.sectionright {
 	right: 0;
 }
 
-#loader {
+.loader {
     z-index: 1001; /* anything higher than z-index: 1000 of .loader-section */
 }
 
@@ -144,4 +144,12 @@ img.artist-image {
     align-items: center;
     display: flex;
     flex-direction: column;
+}
+
+/*Slide*/
+
+.w100 {
+    width: 90vw!important;
+    height: 90vh;
+    transform: translateX(6%);
 }

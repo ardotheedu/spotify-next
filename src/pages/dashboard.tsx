@@ -1,25 +1,24 @@
 import React, {useState, useEffect} from 'react';
 import { GetServerSideProps } from 'next'
-import '../styles/pages/dashboard.module.css'
+import styles from './dashboard.module.css'
 import { spotifyApi, authToken } from '../service/dashboard';
-
-
+import Carousel from 'react-bootstrap/Carousel'
 
 export default function Dashboard({result}) {
 
   let [artists, setArtists] = useState<SpotifyApi.ArtistObjectFull[]>()
-  const [activeImageIndex, setActiveImageIndex] = useState(0)
+
 
   useEffect(() => {
     setArtists(result)
   }, [result]) 
     if(!artists) {
         return (
-            <div id="loader-wrapper">
-                <div id="loader"></div>
+            <div className={styles.loaderwrapper}>
+                <div className={styles.loader}></div>
 
-                <div className="loader-section section-left"></div>
-                <div className="loader-section section-right"></div>
+                <div className={`${styles.loadersection} ${styles.sectionleft}`}></div>
+                <div className={`${styles.loadersection} ${styles.sectionright}`}></div>
 
             </div>
         )
@@ -29,21 +28,24 @@ export default function Dashboard({result}) {
   
   return (
     <div className="background-per">
-        <h1 className="title-per">Your Favorites Artists</h1>
-            <div className="personalization">
-            {artists.map((artist) => {
-            return(
-                    <div id="artist">
-                        <p className="artist-name" key={artist.name}>{artist.name}</p>
-                        <img 
-                        src={artist.images[activeImageIndex].url} 
-                        alt={artist.name} 
-                        key={artist.images[activeImageIndex].url}
-                        className="artist-image"/>
-                    </div> 
-            ) 
-            })}
-            </div>
+        <h1 className={styles.titleper}>Your Favorites Artists</h1>
+        <Carousel>
+
+            {artists.map(artist => (
+              <Carousel.Item>
+                <img
+                  className={styles.w100}
+                  src={artist.images[0].url}
+                  alt={artist.name} 
+                />
+                <Carousel.Caption>
+                  <h3>{artist.name}</h3>
+                  <p>Numero de seguidores: {artist.followers.total}</p>
+                </Carousel.Caption>
+              </Carousel.Item>
+            ))}
+          
+          </Carousel>
         
     </div>
   );
