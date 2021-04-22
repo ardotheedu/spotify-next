@@ -14,7 +14,16 @@ export const GlobalStyle = createGlobalStyle`
     }
     body {
         background: var(--black-s);
+        font-family: 'Work Sans', sans-serif;
     }
+    h1, h2, h3, h5, h6 {
+      font-weight: 700;
+    }
+
+    input, button {
+      font-weight: 400;
+    }
+    
 `;
 
 const BasicLayout = ({ children }: { children: any }) => {

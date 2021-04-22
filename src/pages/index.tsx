@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next'
-import { Container, Content, Title } from '../styles/pages/home';
+import { Container, Content, Title, Text } from '../styles/pages/home';
 import Cookies from 'js-cookie'
 import { InferGetStaticPropsType } from 'next'
 
@@ -26,7 +26,10 @@ const Home = ({ link, state }: InferGetStaticPropsType<typeof getStaticProps>) =
   return (
         <Container>
             <Content>
-                <Title>SpotifyMe</Title>
+                <div>
+                  <Title>SpotifyMe</Title>
+                  <Text>FIND YOUR FAVORITES ARTISTS</Text>
+                </div>
                 <a href={link}>
                   Login
                 </a>

@@ -11,32 +11,9 @@
 }
 h1.titleper {
     margin-top: 10px;
-    font-size: 30px;
-}
-div#artist {
-    margin-top: 15px;
-    align-items: center;
-    height: 710px;
-    width: 680px;
-    background-color: var(--green-s);
-    border-radius: 20px;
-    align-content: center;
-}
-
-p.artistname {
-    font-weight: bold;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 2rem;
     text-align: center;
-    margin: 7px;
-    font-size: 25px;
-    color: var(--white-s);
-}
-
-
-img.artistimage {
-
-    margin-left: 20px;
-    margin-right: 20px;
+    color: white;
 }
 
 /*Loading*/
@@ -149,7 +126,7 @@ img.artistimage {
 /*Slide*/
 
 .w100 {
-    width: 90vw!important;
-    height: 90vh;
-    transform: translateX(6%);
+    width: 45vw;
+    height: 45vw;
+    transform: translateX(60%);
 }

@@ -28,7 +28,7 @@ export default function Dashboard({result}) {
   
   return (
     <div className="background-per">
-        <h1 className={styles.titleper}>Your Favorites Artists</h1>
+        <h1 className={styles.titleper}>YOUR FAVORITES ARTISTS</h1>
         <Carousel>
 
             {artists.map(artist => (
