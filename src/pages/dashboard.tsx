@@ -5,13 +5,12 @@ import { spotifyApi, authToken } from '../service/dashboard';
 import Carousel from 'react-bootstrap/Carousel'
 
 export default function Dashboard({result}) {
-
-  let [artists, setArtists] = useState<SpotifyApi.ArtistObjectFull[]>()
-
+  const [artists, setArtists] = useState<SpotifyApi.ArtistObjectFull[]>()
 
   useEffect(() => {
     setArtists(result)
   }, [result]) 
+
     if(!artists) {
         return (
             <div className={styles.loaderwrapper}>
@@ -24,11 +23,10 @@ export default function Dashboard({result}) {
         )
     }
 
-    console.log(artists)
+
   
   return (
     <div className="background-per">
-        <h1 className={styles.titleper}>YOUR FAVORITES ARTISTS</h1>
         <Carousel>
 
             {artists.map(artist => (
@@ -53,11 +51,6 @@ export default function Dashboard({result}) {
 
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-
-  var stateKey = 'spotify_auth_state';
-
-  // const storedState = ctx.req.cookies ? ctx.req.cookies[stateKey] : null;
-  // var state = ctx.query.state || null;
   var code = ctx.query.code as string;
 
   const validToken = spotifyApi.getAccessToken()
@@ -65,7 +58,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     await authToken({code})
   }
 
-  const result = await spotifyApi.getMyTopArtists()
+  const result = await spotifyApi.getMyTopArtists({time_range: 'long_term'})
   .then(
     (data) => {
       return data.body.items

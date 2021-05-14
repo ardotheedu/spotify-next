@@ -126,7 +126,7 @@ h1.titleper {
 /*Slide*/
 
 .w100 {
-    width: 45vw;
-    height: 45vw;
-    transform: translateX(60%);
+    width: 95vw;
+    height: 100vh;
+    transform: translateX(2.7%)
 }

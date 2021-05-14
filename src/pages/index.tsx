@@ -1,6 +1,5 @@
 import { GetStaticProps } from 'next'
-import { Container, Content, Title, Text } from '../styles/pages/home';
-import Cookies from 'js-cookie'
+import { Container, LoginButton } from '../styles/pages/home';
 import { InferGetStaticPropsType } from 'next'
 
 var generateRandomString = function(length) {
@@ -12,28 +11,26 @@ var generateRandomString = function(length) {
   }
   return text;
 };
-
-var stateKey = 'spotify_auth_state';
 var redirect_uri = 'http://localhost:3000/dashboard'; 
 import querystring from 'querystring'
-import { useEffect } from 'react';
 
 
 const Home = ({ link, state }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  useEffect(() => {
-    Cookies.set(stateKey, state)
-  }, [state])
   return (
         <Container>
-            <Content>
-                <div>
-                  <Title>SpotifyMe</Title>
-                  <Text>FIND YOUR FAVORITES ARTISTS</Text>
-                </div>
-                <a href={link}>
-                  Login
-                </a>
-            </Content>
+          <section className="hero">
+            <span>🎧 Hi, Welcome to SpotifyMe</span>
+            <h1>Find your favorite artists</h1>
+            <p>
+              Discover about the artists that <br />
+              <span>you like the most</span>
+            </p>
+
+            <LoginButton href={link}>Login</LoginButton>
+          </section>
+
+          <img src="/avatar.svg" alt="Girl coding" />
+
         </Container>
   );
 };
@@ -56,8 +53,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   });
   return {
     props: {
-      link,
-      state
+      link
     },
   }
 }

@@ -1,29 +1,43 @@
 import {createGlobalStyle} from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
-    :root {
-    --black-s: #121214;
-    --white-s: #FFFFFF;
-    --green-s: #1DB954;
-    }
     * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        outline: 0;
-    }
-    body {
-        background: var(--black-s);
-        font-family: 'Work Sans', sans-serif;
-    }
-    h1, h2, h3, h5, h6 {
-      font-weight: 700;
-    }
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  :root {
+      --white: #A8DADC;
+      --blue-light: #F1FAEE;
+      --red: #E63946
+  }
+  @media (max-width: 1080px) {
+      html {
+          font-size: 93.75%
+      }
+  }
+  @media (max-width: 720px) {
+      html {
+          font-size: 87.5%
+      }
+  }
+  body {
+      background: var(--blue-light);
+      color: var(--white)
+  }
 
-    input, button {
-      font-weight: 400;
-    }
-    
+  body, input, textarea, select, button {
+      font: 400 1rem "Roboto", sans-serif
+  }
+
+  button {
+      cursor: pointer;
+  }
+
+  a {
+      color: inherit;
+      text-decoration: none;
+  }
 `;
 
 const BasicLayout = ({ children }: { children: any }) => {
