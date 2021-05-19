@@ -2,12 +2,20 @@
 /*Background*/
 
 .backgroundper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: auto;
-    background-color: var(--black-s);
+  filter: blur(15px);
+  -webkit-filter: blur(15px);
+
+  /* Full height */
+  height: 100vh;
+  width: 98.7vw;
+
+}
+.content {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 h1.titleper {
     margin-top: 10px;
@@ -126,7 +134,6 @@ h1.titleper {
 /*Slide*/
 
 .w100 {
-    width: 95vw;
-    height: 100vh;
-    transform: translateX(2.7%)
+    min-width: 650px;
+    max-height: 640px;
 }

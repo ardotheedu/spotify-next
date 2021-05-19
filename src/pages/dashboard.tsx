@@ -7,6 +7,11 @@ import Carousel from 'react-bootstrap/Carousel'
 export default function Dashboard({result}) {
   const [artists, setArtists] = useState<SpotifyApi.ArtistObjectFull[]>()
 
+  const [index, setIndex] = useState(0);
+
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
+  };
   useEffect(() => {
     setArtists(result)
   }, [result]) 
@@ -26,26 +31,28 @@ export default function Dashboard({result}) {
 
   
   return (
-    <div className="background-per">
-        <Carousel>
-
-            {artists.map(artist => (
-              <Carousel.Item>
-                <img
-                  className={styles.w100}
-                  src={artist.images[0].url}
-                  alt={artist.name} 
-                />
-                <Carousel.Caption>
-                  <h3>{artist.name}</h3>
-                  <p>Numero de seguidores: {artist.followers.total}</p>
-                </Carousel.Caption>
-              </Carousel.Item>
-            ))}
+    <>
+      <img className={styles.backgroundper} src={artists[index].images[0].url} alt={artists[index].name} />
+      <div className={styles.content}>
+          <Carousel activeIndex={index} onSelect={handleSelect}>
+              {artists.map(artist => (
+                <Carousel.Item>
+                  <img
+                    className={styles.w100}
+                    src={artist.images[0].url}
+                    alt={artist.name} 
+                  />
+                  <Carousel.Caption>
+                    <h3>{artist.name}</h3>
+                    <p>Número de seguidores: {artist.followers.total}</p>
+                  </Carousel.Caption>
+                </Carousel.Item>
+              ))}
+            
+            </Carousel>
           
-          </Carousel>
-        
-    </div>
+      </div>
+    </>
   );
 };
 

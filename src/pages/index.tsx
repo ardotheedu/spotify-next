@@ -11,7 +11,7 @@ var generateRandomString = function(length) {
   }
   return text;
 };
-var redirect_uri = 'http://localhost:3000/dashboard'; 
+var redirect_uri = `http://localhost:3000/dashboard`; 
 import querystring from 'querystring'
 
 
