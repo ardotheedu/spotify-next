@@ -1,5 +1,5 @@
 import axios from 'axios'
 
-export const api = axios.create({
+export const apinext = axios.create({
     baseURL: '/api'
 })

@@ -136,4 +136,6 @@ h1.titleper {
 .w100 {
     min-width: 650px;
     max-height: 640px;
+    object-fit: cover;
+
 }

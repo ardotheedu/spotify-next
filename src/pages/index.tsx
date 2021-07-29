@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next'
-import { Container, LoginButton } from '../styles/pages/home';
+import { Container, Hero, LoginButton } from '../styles/pages/home';
 import { InferGetStaticPropsType } from 'next'
+import Head from 'next/head'
 
 var generateRandomString = function(length) {
   var text = '';
@@ -11,34 +12,38 @@ var generateRandomString = function(length) {
   }
   return text;
 };
-var redirect_uri = `http://localhost:3000/dashboard`; 
+var redirect_uri = `http://localhost:3000/callback`; 
 import querystring from 'querystring'
 
 
 const Home = ({ link, state }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-        <Container>
-          <section className="hero">
-            <span>🎧 Hi, Welcome to SpotifyMe</span>
-            <h1>Find your favorite artists</h1>
-            <p>
-              Discover about the artists that <br />
-              <span>you like the most</span>
-            </p>
+    <>
+      <Head>
+        <title>Home | my.spot</title>
+      </Head>
 
-            <LoginButton href={link}>Login</LoginButton>
-          </section>
+      <Container>
+        <Hero>
+          <span>🎧 Olá, amante da musica.</span>
+          <h1>Tudo do seu mundo <span>Spotify</span>.</h1>
+          <p>
+            Veja seus artistas e canções favoritos <br />
+            <span>diretamente do Spotify</span>
+          </p>
+          <LoginButton href={link}>Login</LoginButton>
+        </Hero>
 
-          <img src="/avatar.svg" alt="Girl coding" />
-
-        </Container>
+        <img src="/images/avatar.png" alt="Girl coding" />
+      </Container>
+    </>
   );
 };
 
 export default Home;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const client_id = process.env.CLIENT_ID
+  const client_id = '14af23c1ba504db7ab3bc6c3bd474b6b'
   const state = generateRandomString(16);
 
   // your application requests authorization

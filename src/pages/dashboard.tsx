@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import { GetServerSideProps } from 'next'
 import styles from './dashboard.module.css'
-import { spotifyApi, authToken } from '../service/dashboard';
 import Carousel from 'react-bootstrap/Carousel'
+import { api } from '../services/api';
 
-export default function Dashboard({result}) {
+export default function Dashboard() {
   const [artists, setArtists] = useState<SpotifyApi.ArtistObjectFull[]>()
 
   const [index, setIndex] = useState(0);
@@ -13,8 +12,15 @@ export default function Dashboard({result}) {
     setIndex(selectedIndex);
   };
   useEffect(() => {
-    setArtists(result)
-  }, [result]) 
+    api.get('/me/top/artists')
+      .then(response =>
+        setArtists(response.data.items)
+      )
+  }, []) 
+
+  console.log(artists)
+
+
 
     if(!artists) {
         return (
@@ -57,25 +63,3 @@ export default function Dashboard({result}) {
 };
 
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  var code = ctx.query.code as string;
-
-  const validToken = spotifyApi.getAccessToken()
-  if (!validToken) {
-    await authToken({code})
-  }
-
-  const result = await spotifyApi.getMyTopArtists({time_range: 'long_term'})
-  .then(
-    (data) => {
-      return data.body.items
-    }, (error) => {
-      console.log("Something went wrong", error)
-    }
-  )
-  return {
-    props: {
-      result
-    }
-  }
-}

@@ -1,49 +1,60 @@
-import { createContext, useState, ReactNode, useEffect } from 'react'
-import Cookies from 'js-cookie'
+import { createContext, ReactNode, useState, useEffect } from "react"
+import { setCookie, parseCookies } from 'nookies'
+import { api } from "../services/api";
+import { apinext } from "../services/apinext";
+import Router from "next/router";
 
-
-export const ChallengesContext = createContext({} as ChallengesContextData)
-
-
-interface ChallengesContextData {
-    level: number,
-    currentExperience: number,
-
+type AuthContextData = {
+    signIn(code: string): Promise<void>;
 }
-interface ChallengesProviderProps {
+type AuthProviderProps = {
     children: ReactNode;
-    level: number,
-    currentExperience: number,
-    challengeCompleted: number
 }
+export const AuthContext = createContext({} as AuthContextData);
 
 
-
-export function ChallengesProvider({children, ...rest}: ChallengesProviderProps) {
-    const [level, setLevel] = useState(rest.level)
-    const [currentExperience, setCurrentExperience] = useState(rest.currentExperience)
-    const [challengeCompleted, setChallengeCompleted] = useState(rest.challengeCompleted)
-
+export function AuthProvider({ children }: AuthProviderProps) {
 
     useEffect(() => {
-        Cookies.set('level', String(level))
-        Cookies.set('currentExperience', String(currentExperience))
-        Cookies.set('challengeCompleted', String(challengeCompleted))
-    }, [level, currentExperience, challengeCompleted])
+        const {'spotifyauth.token': token} = parseCookies()
 
-    function levelUp() {
-        setLevel(level + 1)
+        console.log(token)
+
+        if (token) {
+            console.log(token)
+        }
+    }, [])
+
+    async function signIn(code: string){
+        try {
+            
+            const response = await apinext.post('/access_token', {
+                code,
+            })
+
+            console.log(response.data)
+            const {access_token, refresh_token} = response.data;
+
+            setCookie(undefined, 'spotifyauth.token', access_token, {
+                maxAge: 60 * 60 * 24 * 30,
+                path: '/'
+            })
+            setCookie(undefined, 'spotifyauth.refreshToken', refresh_token,{
+                maxAge: 60 * 60 * 24 * 30,
+                path: '/' // /path vai definir de formar global
+            })
+
+            api.defaults.headers['Authorization'] = `Bearer ${access_token}`
+
+            Router.push('/dashboard')
+        } catch (err) {
+            console.log(err)
+        }
     }
 
-
     return (
-        <ChallengesContext.Provider 
-            value={{
-                level,
-                currentExperience,
-            }}
-        >
+        <AuthContext.Provider value={{signIn}}>
             {children}
-        </ChallengesContext.Provider>
+        </AuthContext.Provider>
     )
 }
