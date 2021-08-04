@@ -18,8 +18,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
     useEffect(() => {
         const {'spotifyauth.token': token} = parseCookies()
 
-        console.log(token)
-
         if (token) {
             console.log(token)
         }
@@ -32,7 +30,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
                 code,
             })
 
-            console.log(response.data)
             const {access_token, refresh_token} = response.data;
 
             setCookie(undefined, 'spotifyauth.token', access_token, {

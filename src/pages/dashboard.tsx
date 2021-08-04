@@ -6,11 +6,7 @@ import { api } from '../services/api';
 export default function Dashboard() {
   const [artists, setArtists] = useState<SpotifyApi.ArtistObjectFull[]>()
 
-  const [index, setIndex] = useState(0);
 
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  };
   useEffect(() => {
     api.get('/me/top/artists')
       .then(response =>
@@ -38,26 +34,51 @@ export default function Dashboard() {
   
   return (
     <>
-      <img className={styles.backgroundper} src={artists[index].images[0].url} alt={artists[index].name} />
-      <div className={styles.content}>
-          <Carousel activeIndex={index} onSelect={handleSelect}>
-              {artists.map(artist => (
-                <Carousel.Item>
-                  <img
-                    className={styles.w100}
-                    src={artist.images[0].url}
-                    alt={artist.name} 
-                  />
-                  <Carousel.Caption>
-                    <h3>{artist.name}</h3>
-                    <p>Número de seguidores: {artist.followers.total}</p>
-                  </Carousel.Caption>
-                </Carousel.Item>
-              ))}
+        <div className={styles.content}>
+          <header>
+            <h1>Ranking</h1>
+          </header>
+  
+          <main>
             
-            </Carousel>
-          
-      </div>
+            <div>
+              <p>POSIÇÃO</p>
+              <p>ARTISTA</p>
+              <p>SEGUIDORES</p>
+            </div>
+  
+            { artists && artists.map((artist, index) => (
+              <div
+                key={artist.id}
+              >
+                <div
+                  className={styles.punctuation}
+                >
+                    {index + 1}
+                </div>
+                
+                <div 
+                  className={styles.user}
+                >
+                  <img src={artist.images[0].url}/>
+                  <article>
+                    <strong>{artist.name}</strong>
+                  </article>
+                </div>
+  
+                <div className={styles.followers}>
+                  <span>
+                    {artist.followers.total}
+                  </span> 
+                </div>
+                {/* <br/>
+                <br/>
+                <br/> */}
+              </div>
+            )) }
+            <br/>
+          </main>
+        </div>
     </>
   );
 };

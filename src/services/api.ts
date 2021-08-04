@@ -1,6 +1,7 @@
 import axios, { AxiosError } from 'axios';
 import {parseCookies, setCookie} from 'nookies'
 import QueryString from 'qs';
+import { apinext } from './apinext';
 
 let  cookies = parseCookies()
 let isRefreshing = false
@@ -13,34 +14,23 @@ export const api = axios.create({
     }
 })
 
-const client_id = process.env.CLIENT_ID
-const client_secret = process.env.CLIENT_SECRET
-
 api.interceptors.response.use(response => {
     return response
 }, (error: AxiosError) => {
 
-    console.log(error)
+    console.log(error.response)
     if (error.response.status === 401) {
-        if (error.response.data.code === 'token.expired') {
+        if (error.response.data.error.message === 'The access token expired') {
             cookies = parseCookies()
 
-            const {'nextauth.refreshToken': refresh_token} = cookies;
+            const {'spotifyauth.refreshToken': refresh_token} = cookies;
+
             const originalConfig = error.config
 
             if(!isRefreshing) {
                 isRefreshing = true
-                axios.post('https://accounts.spotify.com/api/token', 
-                    QueryString.stringify({
-                        grant_type: 'refresh_token',
-                        refresh_token: refresh_token,
-                    })
-                , 
-                {
-                    headers: {
-                        "Content-Type": "application/x-www-form-urlencoded",
-                        Authorization: 'Basic ' + (Buffer.from(client_id + ':' + client_secret).toString('base64'))
-                    }
+                apinext.post('/refresh_token', {
+                    refresh_token,
                 }).then(response => {
                     const {access_token} = response.data;
     
