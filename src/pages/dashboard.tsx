@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import styles from './dashboard.module.css'
-import Carousel from 'react-bootstrap/Carousel'
+import styles from './dashboard.module.scss'
 import { api } from '../services/api';
 
 export default function Dashboard() {
