@@ -49,7 +49,7 @@ export const LoginButton = styled.a`
     border: 0;
     border-radius: 2rem;
     background: var(--yellow-500);
-    color: var(--purple);
+    color: var(--purple-700);
     font-size: 1.25rem;
     font-weight: bold;
 

@@ -7,8 +7,9 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   :root {
-      --purple: #701A75;
-      --white: #ffffff;
+    --purple-600: #8C238F;
+    --purple-700: #701A75;
+    --white: #ffffff;
 
     --gray-100: #e1e1e6;
     --gray-300: #a8a8b3;
@@ -31,8 +32,8 @@ export const GlobalStyle = createGlobalStyle`
       }
   }
   body {
-      background: var(--purple);
-      color: var(--white)
+      background: var(--purple-700);
+      color: var(--gray-100)
   }
 
   body, input, textarea, select, button {

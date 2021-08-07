@@ -1,6 +1,6 @@
 .headerContainer {
     height: 5rem;
-    border-bottom: 1px solid var(--gray-800);
+    border-bottom: 1px solid var(--purple-600);
 }
 
 .headerContent {
@@ -35,7 +35,7 @@
             }
 
             &.active {
-                color: var(--white);
+                color: var(--gray-100);
                 font-weight: bold;
             }
 

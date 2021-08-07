@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import styles from './dashboard.module.scss'
+import styles from './ranking.module.scss';
+import { Header } from './components/Header'
 import { api } from '../services/api';
 
-export default function Dashboard() {
+export default function Ranking() {
   const [artists, setArtists] = useState<SpotifyApi.ArtistObjectFull[]>()
 
 
@@ -33,9 +34,10 @@ export default function Dashboard() {
   
   return (
     <>
+        <Header />
         <div className={styles.content}>
           <header>
-            <h1>Ranking</h1>
+            <h1 className={styles.title}>Ranking</h1>
           </header>
   
           <main>
