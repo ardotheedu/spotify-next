@@ -43,9 +43,9 @@ export default function Ranking() {
           <main>
             
             <div>
-              <p>POSIÇÃO</p>
-              <p>ARTISTA</p>
-              <p>SEGUIDORES</p>
+              <p>posição</p>
+              <p>artista</p>
+              <p>seguidores</p>
             </div>
   
             { artists && artists.map((artist, index) => (
