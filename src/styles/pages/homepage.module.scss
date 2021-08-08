@@ -1,5 +1,4 @@
-import styled from 'styled-components'
-export const Container = styled.main`
+.container { 
     max-width: 1120px;
     margin: 0 auto;
     padding: 5rem 0 2rem;
@@ -7,9 +6,9 @@ export const Container = styled.main`
     display: flex;
     align-items: center;
     justify-content: space-between;
-`;
-export const Hero = styled.main`
-        max-width: 600px;
+}
+.hero{
+    max-width: 600px;
 
     > span {
         font-size: 1.5rem;
@@ -21,6 +20,7 @@ export const Hero = styled.main`
         line-height: 4.5rem;
         font-weight: 900;
         margin-top: 2.5rem;
+        color: var(--white);
 
         span {
             color: var(--cyan-500)
@@ -31,6 +31,7 @@ export const Hero = styled.main`
         font-size: 1.5rem;
         line-height: 2.25rem;
         margin-top: 1.5rem;
+        color: var(--white);
 
         span {
             color: var(--cyan-500);
@@ -41,9 +42,10 @@ export const Hero = styled.main`
     a {
         margin-top: 2.5rem;
     }
-`;
+}
 
-export const LoginButton = styled.a`
+.loginButton{
+
     width: 268px;
     height: 4rem;
     border: 0;
@@ -64,4 +66,4 @@ export const LoginButton = styled.a`
         color: var(--gray-900);
         text-decoration: none;
     }
-`;
+}

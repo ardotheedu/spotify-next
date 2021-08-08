@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import styles from './ranking.module.scss';
+import styles from '../styles/pages/ranking.module.scss';
 import { Header } from './components/Header'
 import { api } from '../services/api';
 

@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next'
-import { Container, Hero, LoginButton } from '../styles/pages/home';
+import styles from '../styles/pages/homepage.module.scss';
 import { InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
 
@@ -23,19 +23,19 @@ const Home = ({ link, state }: InferGetStaticPropsType<typeof getStaticProps>) =
         <title>Home | my.spot</title>
       </Head>
 
-      <Container>
-        <Hero>
+      <div className={styles.container}>
+        <main className={styles.hero}>
           <span>🎧 Olá, amante da musica.</span>
           <h1>Tudo do seu mundo <span>Spotify</span>.</h1>
           <p>
             Veja seus artistas e canções favoritos <br />
             <span>diretamente do Spotify</span>
           </p>
-          <LoginButton href={link}>Login</LoginButton>
-        </Hero>
+          <a className={styles.loginButton} href={link}>Login</a>
+        </main>
 
         <img src="/images/avatar.png" alt="Girl coding" />
-      </Container>
+      </div>
     </>
   );
 };
