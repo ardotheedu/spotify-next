@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios';
 import {parseCookies, setCookie} from 'nookies'
-import QueryString from 'qs';
+import { signOut } from '../contexts/ArtistsContext';
 import { apinext } from './apinext';
 
 let  cookies = parseCookies()
@@ -50,6 +50,10 @@ api.interceptors.response.use(response => {
                 }).catch(err => {
                     failedRequestsQueue.forEach(request => request.onFailure(err))
                     failedRequestsQueue = [];
+
+                    if (process.browser) {
+                        signOut();
+                    }
                 }).finally(() => {
                     isRefreshing = false
                 })
@@ -71,6 +75,8 @@ api.interceptors.response.use(response => {
             
         }
     } else {
-        //Deslogar o usuario
+        if (process.browser) {
+            signOut();
+        }
     }
 })

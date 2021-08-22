@@ -11,6 +11,11 @@
     
     display: flex;
     align-items: center;
+    justify-content: space-between;
+
+    div {
+        display: flex;
+    }
 
     nav {
         margin-left: 5rem;
@@ -55,4 +60,11 @@
     button {
         margin-left: auto;
     }
+}
+
+.logout {
+    border: none;
+    border: none;
+    color: inherit;
+    background: none;
 }

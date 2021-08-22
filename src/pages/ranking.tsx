@@ -14,9 +14,6 @@ export default function Ranking() {
       )
   }, []) 
 
-  console.log(artists)
-
-
 
     if(!artists) {
         return (

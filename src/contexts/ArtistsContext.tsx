@@ -1,25 +1,41 @@
 import { createContext, ReactNode, useState, useEffect } from "react"
-import { setCookie, parseCookies } from 'nookies'
+import { setCookie, parseCookies,  destroyCookie } from 'nookies'
 import { api } from "../services/api";
 import { apinext } from "../services/apinext";
 import Router from "next/router";
 
 type AuthContextData = {
     signIn(code: string): Promise<void>;
+    signOut: () => void;
 }
 type AuthProviderProps = {
     children: ReactNode;
 }
 export const AuthContext = createContext({} as AuthContextData);
 
+let authChannel: BroadcastChannel
+
+export function signOut() {
+    destroyCookie(undefined, 'spotifyauth.token')
+    destroyCookie(undefined, 'spotifyauth.refreshToken')
+
+    authChannel.postMessage('signOut')
+
+    Router.push('/')
+}
 
 export function AuthProvider({ children }: AuthProviderProps) {
 
     useEffect(() => {
-        const {'spotifyauth.token': token} = parseCookies()
-
-        if (token) {
-            console.log(token)
+        authChannel = new BroadcastChannel('auth') 
+        authChannel.onmessage = (message) => {
+            switch (message.data) {
+                case 'signOut':
+                    signOut()
+                    break;
+                default:
+                    break;
+            }
         }
     }, [])
 
@@ -50,7 +66,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
 
     return (
-        <AuthContext.Provider value={{signIn}}>
+        <AuthContext.Provider value={{signIn, signOut}}>
             {children}
         </AuthContext.Provider>
     )
