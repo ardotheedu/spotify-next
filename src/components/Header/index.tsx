@@ -4,7 +4,7 @@ import styles from './styles.module.scss'
 import { ActiveLink } from '../ActiveLink'
 import { FiLogOut } from 'react-icons/fi'
 import { useContext } from 'react'
-import { AuthContext } from '../../../contexts/ArtistsContext'
+import { AuthContext } from '../../contexts/ArtistsContext'
 export function Header() {
     const { signOut } = useContext(AuthContext)
     return (

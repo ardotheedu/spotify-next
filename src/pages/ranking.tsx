@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styles from '../styles/pages/ranking.module.scss';
-import { Header } from './components/Header'
+import { Header } from '../components/Header'
 import { api } from '../services/api';
 
 export default function Ranking() {

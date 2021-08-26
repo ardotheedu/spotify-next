@@ -26,7 +26,7 @@ const Home = ({ link, state }: InferGetStaticPropsType<typeof getStaticProps>) =
       <div className={styles.container}>
         <main className={styles.hero}>
           <span>🎧 Olá, amante da musica.</span>
-          <h1>Tudo do seu mundo <span>Spotify</span>.</h1>
+          <h1>Tudo do seu mundo <span>Spotify</span></h1>
           <p>
             Veja seus artistas e canções favoritos <br />
             <span>diretamente do Spotify</span>
