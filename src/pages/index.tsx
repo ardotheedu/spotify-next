@@ -1,4 +1,4 @@
-import { GetStaticProps } from 'next'
+import { GetServerSideProps, GetStaticProps } from 'next'
 import styles from '../styles/pages/homepage.module.scss';
 import { InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
@@ -14,9 +14,10 @@ var generateRandomString = function(length) {
 };
 var redirect_uri = `http://localhost:3000/callback`; 
 import querystring from 'querystring'
+import { parseCookies } from 'nookies';
 
 
-const Home = ({ link, state }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Home = ({ link }: InferGetStaticPropsType<typeof getServerSideProps>) => {
   return (
     <>
       <Head>
@@ -42,11 +43,21 @@ const Home = ({ link, state }: InferGetStaticPropsType<typeof getStaticProps>) =
 
 export default Home;
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const cookies = parseCookies(ctx);
+
+  if (cookies['spotifyauth.token']) {
+    return {
+      redirect: {
+        destination: '/ranking',
+        permanent: false,
+      }
+    }
+  }
+
   const client_id = '14af23c1ba504db7ab3bc6c3bd474b6b'
   const state = generateRandomString(16);
 
-  // your application requests authorization
   var scope = 'user-top-read';
   const link = 'https://accounts.spotify.com/authorize?' +
     querystring.stringify({
@@ -61,4 +72,5 @@ export const getStaticProps: GetStaticProps = async (context) => {
       link
     },
   }
+
 }
