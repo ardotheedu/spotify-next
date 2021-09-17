@@ -9,9 +9,17 @@ export default function Ranking() {
 
   useEffect(() => {
     api.get('/me/top/artists')
-      .then(response =>
-        setArtists(response.data.items)
-      )
+      .then(response => {
+        const formattedArtists = response.data.items.map(artist => {
+          return {
+            ...artist,
+            followers: { 
+              total: artist.followers.total.toLocaleString('pt-BR')
+            }
+          }
+        })
+        setArtists(formattedArtists)
+      })
   }, []) 
 
 
