@@ -119,6 +119,7 @@
     header {
       width: 100%;
       display: flex;
+      justify-content: space-between;
       & > h1 {
         text-align: start;
         color: var(--gray-100);
@@ -183,9 +184,24 @@
   }
   .buttonGroupTerm{
     display: flex;
+    height: 2.25rem;
+    font-weight: 600;
+    margin-top: 0.625rem;
+    margin-bottom: 3rem;
+    & > button {
+      margin-left: 8px
+    }
   }
   .button {
-    color: white;
+    background-color: var(--purple-600);
+    border: var(--purple-700);
+    width: 7rem;
+    height: 2.25rem;
+    color: var(--grey-100);
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 5px;
   }
   .user {
     justify-content: flex-start;

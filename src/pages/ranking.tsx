@@ -71,13 +71,13 @@ export default function Ranking() {
             <h1 className={styles.title}>Ranking</h1>
             <div className={styles.buttonGroupTerm}> 
               <button className={`${styles.button}`} onClick={() => onTermRangeChange('short_term')}>
-                short_term
+                4 semanas
               </button>
               <button className={`${styles.button}`} onClick={() => onTermRangeChange('medium_term')}>
-                medium_term
+                6 meses
               </button>
               <button className={`${styles.button}`} onClick={() => onTermRangeChange('long_term')}>
-                long_term
+                Anos
               </button>
             </div>
           </header>
