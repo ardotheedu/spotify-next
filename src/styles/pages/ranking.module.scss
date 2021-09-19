@@ -118,6 +118,7 @@
     padding: 2.5rem 2rem;
     header {
       width: 100%;
+      display: flex;
       & > h1 {
         text-align: start;
         color: var(--gray-100);
@@ -179,6 +180,12 @@
       }
     }
   
+  }
+  .buttonGroupTerm{
+    display: flex;
+  }
+  .button {
+    color: white;
   }
   .user {
     justify-content: flex-start;

@@ -2,40 +2,66 @@ import React, {useState, useEffect} from 'react';
 import styles from '../styles/pages/ranking.module.scss';
 import { Header } from '../components/Header'
 import { api } from '../services/api';
+import { useQuery } from 'react-query'
+
+interface ImageObject {
+  height?: number;
+  url: string;
+  width?: number;
+}
+
+interface ArtistObjectFull {
+  followers: {
+    href: null;
+    total: number;
+  };
+  images: ImageObject[];
+  name: string;
+  id: string;
+}
 
 export default function Ranking() {
-  const [artists, setArtists] = useState<SpotifyApi.ArtistObjectFull[]>()
+  const [time_range, setTimeRange] = useState('medium_term')
+  async function getArtists(range: string) {
+    const { data } = await api.get('/me/top/artists', {
+      params: {
+        time_range: range,
+      }
+    })
 
+    const artistsFormatted = 
+    data.items.map(artist => {
+        return {
+          ...artist,
+          followers: { 
+            total: artist.followers.total.toLocaleString('pt-BR')
+        }
+      }
+    })
+ 
+    return artistsFormatted        
+  }
 
-  useEffect(() => {
-    api.get('/me/top/artists')
-      .then(response => {
-        const formattedArtists = response.data.items.map(artist => {
-          return {
-            ...artist,
-            followers: { 
-              total: artist.followers.total.toLocaleString('pt-BR')
-            }
-          }
-        })
-        setArtists(formattedArtists)
-      })
-  }, []) 
+  const { isLoading, error, data, isFetching } = useQuery(['artists', time_range], () => getArtists(time_range), {
+    staleTime: 1000 * 60 * 10,
+  })
 
+  if(isLoading || isFetching) {
+      return (
+          <div className={styles.loaderwrapper}>
+              <div className={styles.loader}></div>
 
-    if(!artists) {
-        return (
-            <div className={styles.loaderwrapper}>
-                <div className={styles.loader}></div>
+              <div className={`${styles.loadersection} ${styles.sectionleft}`}></div>
+              <div className={`${styles.loadersection} ${styles.sectionright}`}></div>
 
-                <div className={`${styles.loadersection} ${styles.sectionleft}`}></div>
-                <div className={`${styles.loadersection} ${styles.sectionright}`}></div>
+          </div>
+      )
+  }
 
-            </div>
-        )
-    }
-
-
+  function onTermRangeChange(range: string) {
+    setTimeRange(range)
+    console.log(time_range);
+  }
   
   return (
     <>
@@ -43,6 +69,17 @@ export default function Ranking() {
         <div className={styles.content}>
           <header>
             <h1 className={styles.title}>Ranking</h1>
+            <div className={styles.buttonGroupTerm}> 
+              <button className={`${styles.button}`} onClick={() => onTermRangeChange('short_term')}>
+                short_term
+              </button>
+              <button className={`${styles.button}`} onClick={() => onTermRangeChange('medium_term')}>
+                medium_term
+              </button>
+              <button className={`${styles.button}`} onClick={() => onTermRangeChange('long_term')}>
+                long_term
+              </button>
+            </div>
           </header>
   
           <main>
@@ -53,7 +90,7 @@ export default function Ranking() {
               <p>seguidores</p>
             </div>
   
-            { artists && artists.map((artist, index) => (
+            { data && data.map((artist, index) => (
               <div
                 key={artist.id}
               >
