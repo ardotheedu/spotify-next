@@ -35,7 +35,7 @@ const Home = ({ link }: InferGetStaticPropsType<typeof getServerSideProps>) => {
           <a className={styles.loginButton} href={link}>Login</a>
         </main>
 
-        <img src="/images/avatar.png" alt="Girl coding" />
+        <img className={styles.avatar} src="/images/avatar.png" alt="Girl coding" />
       </div>
     </>
   );

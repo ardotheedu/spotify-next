@@ -68,3 +68,16 @@
         text-decoration: none;
     }
 }
+
+//Mobile 
+@media (max-width: 629px) {
+    .avatar {
+        display: none;
+    }
+    .hero{
+        text-align: center;
+    }
+    .loginButton {
+        margin: auto;
+    }
+}
