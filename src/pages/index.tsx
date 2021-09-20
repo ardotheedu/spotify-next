@@ -12,7 +12,7 @@ var generateRandomString = function(length) {
   }
   return text;
 };
-var redirect_uri = `http://localhost:3000/callback`; 
+var redirect_uri = process.env.NODE_ENV === 'development' ? `http://localhost:3000/callback` : 'https://spotify-next-kappa.vercel.app/callback'; 
 import querystring from 'querystring'
 import { parseCookies } from 'nookies';
 
