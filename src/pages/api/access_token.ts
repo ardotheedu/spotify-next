@@ -7,7 +7,7 @@ const client_secret = process.env.CLIENT_SECRET;
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'POST') {
-        const {code} = req.body;
+        const {code} = await req.body;
         if (code) {
             const response = await axios.post('https://accounts.spotify.com/api/token', 
                     QueryString.stringify({
