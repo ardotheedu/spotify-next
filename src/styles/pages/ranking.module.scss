@@ -1,3 +1,5 @@
+
+
 /*Loading*/
 
 .loaderwrapper {
@@ -248,11 +250,38 @@
     font-weight: 600;
   }
   
-  @media(max-width: 768px) {
-    .content main div  {
-      grid-template-columns: 1fr 3fr; 
-    }
-    .content main div {
-      margin-top: 30px;
+
+  /* Mobile */
+
+@media(max-width:629px) {
+  .categories {
+    p {
+      &:nth-child(3){
+        display: none !important;
+        span {
+          display: none;
+        }
+      }
     }
   }
+
+  .content {
+    main {
+      div {
+        grid-template-columns: 3fr 5fr !important;
+      }
+    }
+    header {
+      display: block !important;
+    }
+  }
+
+  .followers {
+    display: none !important;
+  }
+
+  .button {
+    width: 33% !important;
+  }
+      
+}

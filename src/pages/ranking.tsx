@@ -84,7 +84,7 @@ export default function Ranking() {
   
           <main>
             
-            <div>
+            <div className={styles.categories}>
               <p>posição</p>
               <p>artista</p>
               <p>seguidores</p>
