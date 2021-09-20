@@ -13,7 +13,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                     QueryString.stringify({
                         grant_type: "authorization_code",
                         code: code,
-                        redirect_uri: 'http://localhost:3000/callback'
+                        redirect_uri: process.env.NODE_ENV === 'development' ? `http://localhost:3000/callback` : 'https://spotify-next-kappa.vercel.app/callback'
                     }),
                     {
                     headers: {
