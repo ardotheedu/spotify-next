@@ -9,7 +9,7 @@
 
 ## Introduction
 
-See your favorites artists from spotify filtering from the last 6 weeks, 4 months or lifetime.
+See your favorites artists from spotify filtering from the last 4 weeks, 6 months or lifetime.
 
 ## Demo
 
