@@ -196,14 +196,15 @@
   }
   .button {
     background-color: var(--purple-600);
-    border: var(--purple-700);
+    border: none;
     width: 7rem;
     height: 2.25rem;
     color: var(--grey-100);
     text-transform: uppercase;
     font-weight: 600;
     font-size: 0.9rem;
-    border-radius: 5px;
+    border-radius: 4px;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.06));
   }
   .user {
     justify-content: flex-start;
@@ -239,10 +240,12 @@
     font-size: 1.5rem;
     font-weight: 600;
     margin-right: 5px;
-    border-radius: 5px 0 0 5px;
+    border-radius: 16px 0 0 16px;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.06));
   }
   .followers {
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 16px 16px 0;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.06));
   }
   
   .content div span {
@@ -279,6 +282,7 @@
 
   .button {
     width: 33% !important;
+    
   }
       
 }
