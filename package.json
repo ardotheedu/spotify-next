@@ -23,7 +23,8 @@
     "request": "^2.88.2",
     "sass": "^1.37.5",
     "styled-components": "^5.2.1",
-    "swr": "^0.4.2"
+    "swr": "^0.4.2",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/js-cookie": "^2.2.6",
