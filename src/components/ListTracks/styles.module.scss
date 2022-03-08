@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 2rem;
+    background-color: var(--purple-600);
+    padding: 16px;
+    min-height: 437px;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.06));
+    border-radius: 4px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.saveButton {
+    background: none;
+    border: none;
+}
+
+.title {
+    margin-bottom: 8px;
+    color: var(--gray-100);
+}
