@@ -1,14 +1,16 @@
 .container {
     display: flex;
     margin: 0 auto;
-    width: 500px;
-    margin-top: 2rem;
+    width: 100%;
+    max-width: 500px;
     justify-content: space-between;
+}
 
-} 
+
 .searchBox {
     display: flex;
     border-radius: 5px;
+    width: 70%;
 } 
 .searchBar{
     input {
@@ -24,15 +26,15 @@
     }
     margin-right: 16px;
 }
-
+.optionsBox {
+    margin-right: 5px;
+}
 .searchOptions {
     padding: 6px 6px 7px;
-    margin-right: 5px;
     filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.06));
     color: var(--gray-100);
     border: none;
     background-color: var(--purple-600);
-    border-radius: 4px;
 }
 
 .search {
@@ -43,4 +45,12 @@
     color: var(--gray-100);
     border-radius: 4px;
 
+}
+
+@media(max-width:629px) { 
+    .searchBar{ 
+        input {
+            width: 7rem;
+        }
+    }
 }

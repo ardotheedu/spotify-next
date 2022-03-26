@@ -29,8 +29,8 @@ export function SearchBox() {
     return (
         <div className={styles.container}>
           <div className={styles.searchBox}>
-            <div>
-              <select className={styles.searchOptions} onChange={e => handleSelectedOption(e)} title="Selecione entre cidade e coordenadas para saber a temperatura">
+            <div className={styles.optionsBox} >
+              <select className={styles.searchOptions}  onChange={e => handleSelectedOption(e)} title="Selecione entre cidade e coordenadas para saber a temperatura">
                 <option value="cidade">Cidade</option>
                 <option value="coordernadas">Coordenadas</option>
               </select>

@@ -1,9 +1,10 @@
 .container {
     display: flex;
     flex-direction: column;
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     margin: 0 auto;
-    margin-top: 2rem;
+    margin: 2rem auto;
     background-color: var(--purple-600);
     padding: 16px;
     min-height: 437px;

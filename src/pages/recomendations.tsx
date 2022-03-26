@@ -12,7 +12,8 @@ const Recomendations = () => {
   const {handleSearchWeatherAndGetTracks, setCity} = useContext(AuthContext)
 
   async function getCityByIP() {
-    const cityResponse = await axios.get(`https://ipgeolocation.abstractapi.com/v1/?api_key=${process.env.NEXT_PUBLIC_IP_API_KEY}`)
+    const cityResponse = await axios.get(`https://ipapi.co/json/`)
+    console.log(cityResponse.data)
     setCity(cityResponse.data.city)
     handleSearchWeatherAndGetTracks({searchOption: "cidade", city: cityResponse.data.city})    
   }
