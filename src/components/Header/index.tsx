@@ -24,7 +24,7 @@ export function Header() {
     <FiMenu size={30} className="menu" color="#e1e1e6"/>
   )}</button>
                         <nav className={`${styles.menuNav} ${navbarOpen ? `${styles.showMenu}` : `${styles.hideMenu}`}`}>
-                            <div>
+                            <div className={styles.menuOptions}>
                                 <ActiveLink activeClassName={`${styles.active} ${styles.menuItem}`} href="/ranking">
                                     <a>Ranking</a>
                                 </ActiveLink>
