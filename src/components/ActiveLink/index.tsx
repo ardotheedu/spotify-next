@@ -15,7 +15,7 @@ export function ActiveLink({children, activeClassName, ...rest}: ActiveLinkProps
         : '';
     
     return ( 
-        <Link {...rest}>
+        <Link {...rest} >
             {cloneElement(children, {
                 className
             })}
