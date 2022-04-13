@@ -85,10 +85,7 @@
     width: 0;
     overflow: hidden;
   }
-  .menuOptions {
-    display: flex;
-    flex-direction: column;
-  }
+
   
   .menuNav.showMenu {
     display: flex;
@@ -107,8 +104,14 @@
   .hideMenu {
     display: none;
   }
-
+  .menuOptions {
+    display: flex;
+    flex-direction: column;
+  }
   @media(min-width:629px) {
+    .menuOptions {
+        flex-direction: row;
+    }
     .headerContent {
         justify-content: unset;
         nav {
