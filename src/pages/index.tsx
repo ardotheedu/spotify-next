@@ -23,7 +23,7 @@ const Home = ({ link }: InferGetStaticPropsType<typeof getServerSideProps>) => {
       <Head>
         <title>Home | my.spot</title>
       </Head>
-
+      <img className={styles.blob} src="/images/blob-grande.svg" alt="decorative blob ilustration" />
       <div className={styles.container}>
         <main className={styles.hero}>
           <span>🎧 Olá, amante da musica.</span>
@@ -36,6 +36,10 @@ const Home = ({ link }: InferGetStaticPropsType<typeof getServerSideProps>) => {
         </main>
 
         <img className={styles.avatar} src="/images/avatar.png" alt="Girl coding" />
+      </div>
+      <div className={styles.blobBottom}>
+        <img className={styles.blobLeft} src="/images/blob-media.svg" alt="decorative blob ilustration" />
+        <img className={styles.blobRight} src="/images/blob.svg" alt="decorative blob ilustration" />
       </div>
     </>
   );

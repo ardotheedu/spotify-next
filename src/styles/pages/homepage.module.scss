@@ -8,6 +8,12 @@
     align-items: center;
     justify-content: space-between;
 }
+.blob {
+    display: none;
+}
+.blobBottom {
+    display: none;
+}
 .hero{
     max-width: 600px;
 
@@ -51,7 +57,7 @@
     height: 4rem;
     border: 0;
     border-radius: 2rem;
-    background: var(--yellow-500);
+    background: var(--cyan-500);
     color: var(--purple-700);
     font-size: 1.25rem;
     font-weight: bold;
@@ -76,8 +82,50 @@
     }
     .hero{
         text-align: center;
+        
+        h1 {
+            font-size: 48px;
+            line-height: 56px;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.5rem;
+        }
     }
     .loginButton {
         margin: auto;
+    }
+    .blobBottom {
+        display: unset;
+    }
+
+    .blobLeft {
+        position: fixed;
+        bottom: -53vh;
+        left: -200px;
+        background-image: url('/images/blob-media.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: -1;
+    }
+    .blobRight {
+        position: fixed;
+        bottom: -53vh;
+        right: -200px;
+        background-image: url('/images/blob.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: -1;
+    }
+    .blob {
+        display: unset;
+        position: fixed;
+        top: -50vh;
+        left: 200px;
+        background-image: url('/images/blob-grande.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: -1;
     }
 }
