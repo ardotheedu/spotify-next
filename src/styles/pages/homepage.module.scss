@@ -77,6 +77,9 @@
 
 //Mobile 
 @media (max-width: 629px) {
+    .container { 
+        padding: 54px 2rem 54px 2rem;
+    }
     .avatar {
         display: none;
     }
