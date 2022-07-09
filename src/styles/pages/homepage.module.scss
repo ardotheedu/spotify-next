@@ -102,7 +102,7 @@
 
     .blobLeft {
         position: fixed;
-        bottom: -53vh;
+        bottom: -27vh;
         left: -200px;
         background-image: url('/images/blob-media.svg');
         background-repeat: no-repeat;
@@ -111,7 +111,7 @@
     }
     .blobRight {
         position: fixed;
-        bottom: -53vh;
+        bottom: -27vh;
         right: -200px;
         background-image: url('/images/blob.svg');
         background-repeat: no-repeat;
@@ -121,7 +121,7 @@
     .blob {
         display: unset;
         position: fixed;
-        top: -50vh;
+        top: -30vh;
         left: 200px;
         background-image: url('/images/blob-grande.svg');
         background-position: center;
