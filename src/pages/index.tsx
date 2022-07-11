@@ -32,7 +32,10 @@ const Home = ({ link }: InferGetStaticPropsType<typeof getServerSideProps>) => {
             Veja seus artistas e canções favoritos <br />
             <span>diretamente do Spotify</span>
           </p>
-          <a className={styles.loginButton} href={link}>Login</a>
+          <a className={styles.loginButton} href={link}>
+            <span>Login</span>
+            <img className={styles.spotifyLogo} src="/images/spotify-logo.png" />
+          </a>
         </main>
 
         <img className={styles.avatar} src="/images/avatar.png" alt="Girl coding" />
